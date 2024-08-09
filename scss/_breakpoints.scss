@@ -1,0 +1,39 @@
+// _breakpoints.scss
+
+// Mixin for media queries
+@mixin respond-to($breakpointMin: null, $breakpointMax: null) {
+  $media-query: '';
+
+  @if $breakpointMin != null {
+    $media-query: '(min-width: #{$breakpointMin})';
+  }
+
+  @if $breakpointMax != null {
+    @if $media-query != '' {
+      $media-query: '#{$media-query} and (max-width: #{$breakpointMax})';
+    } @else {
+      $media-query: '(max-width: #{$breakpointMax})';
+    }
+  }
+
+  @if $media-query != '' {
+    @media #{$media-query} {
+      @content;
+    }
+  } @else {
+    @warn "No valid breakpoints provided.";
+  }
+}
+
+// Usage examples
+// .example {
+//   @include respond-to(sm) {
+//     // Styles for small screens and up
+//   }
+//   @include respond-to(md) {
+//     // Styles for medium screens and up
+//   }
+//   @include respond-to(lg) {
+//     // Styles for large screens and up
+//   }
+// }

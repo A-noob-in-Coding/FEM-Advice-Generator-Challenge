@@ -1,0 +1,63 @@
+@import "breakpoints.scss";
+@import "reset.scss";
+@import "mixins.scss";
+@import "variables.scss";
+
+body{
+    background-color: $Dark-Blue;
+    @include flex;
+    font-family: $Font-Family;
+}
+
+main{
+    position: relative;
+    width: 40%;
+    padding: 2rem;
+    background-color: $Dark-Grayish-Blue;
+    @include border(0px,10px);
+    @include flex(column,center,center);
+    gap:1rem;
+    p{
+        color: $Neon-Green;
+        letter-spacing: 0.5rem;
+
+    }
+    .advice{
+        text-align: center;
+    }
+
+    .advice-id{
+        letter-spacing: 0.1rem;
+    }
+    q{
+        color: $Light-Cyan;
+        font-size: 1.2rem;
+    }
+    .mobile-line{
+        display: none;
+    }
+    button{
+        padding: 0.5rem;
+        background-color: $Neon-Green;
+        @include border(0px,50%);
+        position: absolute;
+        top: 90%;
+        cursor: pointer;
+        transition: box-shadow  0.5s ease ;
+        &:hover{
+            box-shadow: 0 0 20px 5px $Neon-Green;
+        }
+    }
+}
+
+@include respond-to(10px,767px){
+    main{
+        width: 90%;
+        .mobile-line{
+            display: block;
+        }
+        .desktop-line{
+            display: none;
+        }
+    }
+}
