@@ -1,7 +1,3 @@
-let advice_text = document.getElementById("advice");
-let advice_id = document.getElementById("advice-id");
-// Function to fetch and display random advice
-
 async function fetchRandomAdvice() {
   try {
     const response = await fetch("https://api.adviceslip.com/advice");
@@ -9,20 +5,42 @@ async function fetchRandomAdvice() {
       throw new Error("Network response was not ok");
     }
     const data = await response.json();
-    console.log(data)
-    advice_text.innerText = data.slip.advice;
-    advice_id.innerText = data.slip.id;
+    const advice = data.slip.advice;
+    const adviceElement = document.getElementById("advice");
+    
+    // Display jumbled text
+    displayJumbledText(adviceElement, advice);
+    
+    // Animate text reforming
+    animateTextReforming(adviceElement, advice);
   } catch (error) {
     console.error("There was a problem with the fetch operation:", error);
   }
 }
 
+function displayJumbledText(element, text) {
+  const jumbledText = text.split('').map(() => String.fromCharCode(33 + Math.floor(Math.random() * 94))).join('');
+  element.innerText = jumbledText;
+}
+
+function animateTextReforming(element, text) {
+  let currentText = element.innerText.split('');
+  const originalText = text.split('');
+  
+  let index = 0;
+  const interval = setInterval(() => {
+    if (index < originalText.length) {
+      currentText[index] = originalText[index];
+      element.innerText = currentText.join('');
+      index++;
+    } else {
+      clearInterval(interval);
+    }
+  }, 30); // Adjust the speed of the animation here
+}
+
 // Call the function to fetch and display advice
 fetchRandomAdvice();
 
-let btn = document.getElementById("generate-advice")
-
-btn.addEventListener("click",()=>{
-
-    fetchRandomAdvice();
-})
+// Add event listener to the button to fetch new advice on click
+document.getElementById("generate-advice").addEventListener("click", fetchRandomAdvice);
