@@ -1,0 +1,40 @@
+@import "variables.scss";
+
+main .advice{
+    animation-name: shinyText;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+    animation-direction: alternate;
+}
+
+@keyframes shinyText {
+    from{
+        text-shadow: 0px 0px 0px;
+    }   
+    to{
+        text-shadow: 0px 0px 30px;
+    }
+}
+
+@keyframes buttonAnimation {
+    from{
+        transform: rotate(0deg);
+        box-shadow:none;
+        
+    }
+    
+    to{
+        transform: rotate(90deg);
+        box-shadow: 0 0 20px 5px $Neon-Green;
+    }
+}
+
+
+button:active,
+button:hover{
+    animation-name: buttonAnimation;
+    animation-duration: 1s;
+    animation-direction: reverse;
+
+}

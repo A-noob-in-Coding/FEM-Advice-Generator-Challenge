@@ -1,5 +1,6 @@
 /* Box sizing rules */
 @import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:wght@100..900&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:wght@100..900&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 *,
 *::before,
 *::after {
@@ -76,6 +77,39 @@ textarea:not([rows]) {
   scroll-margin-block: 5ex;
 }
 
+main .advice {
+  animation-name: shinyText;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+  animation-direction: alternate;
+}
+
+@keyframes shinyText {
+  from {
+    text-shadow: 0px 0px 0px;
+  }
+  to {
+    text-shadow: 0px 0px 30px;
+  }
+}
+@keyframes buttonAnimation {
+  from {
+    transform: rotate(0deg);
+    box-shadow: none;
+  }
+  to {
+    transform: rotate(90deg);
+    box-shadow: 0 0 20px 5px hsl(150, 100%, 66%);
+  }
+}
+button:active,
+button:hover {
+  animation-name: buttonAnimation;
+  animation-duration: 1s;
+  animation-direction: reverse;
+}
+
 body {
   background-color: hsl(218, 23%, 16%);
   display: flex;
@@ -124,9 +158,6 @@ main button {
   top: 90%;
   cursor: pointer;
   transition: box-shadow 0.5s ease;
-}
-main button:hover {
-  box-shadow: 0 0 20px 5px hsl(150, 100%, 66%);
 }
 
 @media (min-width: 10px) and (max-width: 767px) {

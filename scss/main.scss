@@ -2,7 +2,7 @@
 @import "reset.scss";
 @import "mixins.scss";
 @import "variables.scss";
-
+@import "animations.scss";
 body{
     background-color: $Dark-Blue;
     @include flex;
@@ -45,9 +45,6 @@ main{
         cursor: pointer;
         transition: box-shadow  0.5s ease ;
         
-        &:active{
-            box-shadow: 0 0 20px 5px $Neon-Green;
-        }
 
     }
 }
