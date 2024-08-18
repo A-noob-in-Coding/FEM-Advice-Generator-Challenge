@@ -1,4 +1,14 @@
 async function fetchRandomAdvice() {
+  
+  const button = document.getElementById("generate-advice");
+  
+  // Remove the animation class if it exists
+  button.classList.remove("button-animate");
+  setTimeout(() => {
+    button.classList.add("button-animate");
+  }, 10);
+
+
   try {
     const response = await fetch("https://api.adviceslip.com/advice");
     if (!response.ok) {
@@ -16,6 +26,7 @@ async function fetchRandomAdvice() {
   } catch (error) {
     console.error("There was a problem with the fetch operation:", error);
   }
+  
 }
 
 function displayJumbledText(element, text) {

@@ -8,6 +8,8 @@ main .advice{
     animation-direction: alternate;
 }
 
+
+
 @keyframes shinyText {
     from{
         text-shadow: 0px 0px 0px;
@@ -30,11 +32,9 @@ main .advice{
     }
 }
 
-
-button:active,
-button:hover{
+.button-animate{
     animation-name: buttonAnimation;
     animation-duration: 1s;
     animation-direction: reverse;
-
 }
+

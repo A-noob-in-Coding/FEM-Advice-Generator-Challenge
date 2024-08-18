@@ -103,8 +103,7 @@ main .advice {
     box-shadow: 0 0 20px 5px hsl(150, 100%, 66%);
   }
 }
-button:active,
-button:hover {
+.button-animate {
   animation-name: buttonAnimation;
   animation-duration: 1s;
   animation-direction: reverse;
@@ -137,6 +136,9 @@ main p {
   letter-spacing: 0.5rem;
 }
 main .advice {
+  overflow: hidden;
+  white-space: normal;
+  word-break: break-all;
   text-align: center;
 }
 main .advice-id {
