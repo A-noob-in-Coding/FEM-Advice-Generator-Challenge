@@ -1,3 +1,5 @@
+let advice_id_span = document.getElementById("advice-id")
+
 async function fetchRandomAdvice() {
   
   const button = document.getElementById("generate-advice");
@@ -17,7 +19,7 @@ async function fetchRandomAdvice() {
     const data = await response.json();
     const advice = data.slip.advice;
     const adviceElement = document.getElementById("advice");
-    
+    advice_id_span.innerText = data.slip.id;
     // Display jumbled text
     displayJumbledText(adviceElement, advice);
     
