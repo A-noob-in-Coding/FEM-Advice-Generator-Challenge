@@ -90,7 +90,7 @@ main .advice {
     text-shadow: 0px 0px 0px;
   }
   to {
-    text-shadow: 0px 0px 30px;
+    text-shadow: 0px 0px 10px;
   }
 }
 @keyframes buttonAnimation {
@@ -138,7 +138,6 @@ main p {
 main .advice {
   overflow: hidden;
   white-space: normal;
-  word-break: break-all;
   text-align: center;
 }
 main .advice-id {
