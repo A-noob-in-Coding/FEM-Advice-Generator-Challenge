@@ -2,6 +2,10 @@
 
 ![Design preview for the Hadith display app](./images/screenshot.png)
 
+# Check the app 
+
+[Pearls Of Sunnah](https://pearls-of-sunnah.vercel.app/)
+
 ## Welcome! 👋
 
 This is a Hadith display application inspired by the Frontend Mentor advice generator challenge, modified to showcase beautiful Islamic teachings through authentic Hadith.
