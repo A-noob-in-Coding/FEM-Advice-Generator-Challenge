@@ -1,64 +1,189 @@
-@import "breakpoints.scss";
-@import "reset.scss";
-@import "mixins.scss";
-@import "variables.scss";
-@import "animations.scss";
-body{
-    background-color: $Dark-Blue;
-    @include flex;
-    font-family: $Font-Family;
-}
 
-main{
-    position: relative;
-    width: 40%;
-    padding: 2rem;
-    background-color: $Dark-Grayish-Blue;
-    @include border(0px,10px);
-    @include flex(column,center,center);
-    gap:1rem;
-    p{
-        color: $Neon-Green;
-        letter-spacing: 0.5rem;
+    @import "reset.scss";        // Reset comes first
+    @import "variables.scss";    // Variables next
+    @import "mixins.scss";       // Then mixins
+    @import "breakpoints.scss";  // Then breakpoints
+    @import "animations.scss";   // Finally animations
 
-    }
-    .advice{
-        overflow: hidden;
-        white-space: normal;
-        text-align: center;
-    }
-
-    .advice-id{
-        letter-spacing: 0.1rem;
-    }
-    q{
-        color: $Light-Cyan;
-        font-size: 1.2rem;
-    }
-    .mobile-line{
-        display: none;
-    }
-    button{
-        padding: 0.5rem;
-        background-color: $Neon-Green;
-        @include border(0px,50%);
-        position: absolute;
-        top: 90%;
-        cursor: pointer;
-        transition: box-shadow  0.5s ease ;
+    body {
+        min-height: 100vh !important; 
+        width: 100vw;
+        background-color: $Dark-Blue;
         
-
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        
+        gap: 10px;
+        font-family: $Font-Family;
+        margin: 0;
+        padding: 0;
     }
+body::before {
+  content: '';
+  position: fixed;
+  top: 50px;
+  right: 10%;
+  width: 120px;
+  height: 180px;
+  background: 
+    radial-gradient(ellipse at center top, $Lamp-Brass 0%, $Lamp-Gold 30%, $Lamp-Brass 60%, $Lamp-Gold 100%);
+  border-radius: 60px 60px 25px 25px;
+  opacity: 0.35;
+  z-index: 0;
+  transform-origin: top center;
+  animation: lampSwing1 6s ease-in-out infinite;
+  box-shadow: 
+    inset 0 0 30px rgba(255, 215, 0, 0.3),
+    0 0 50px rgba(255, 215, 0, 0.1);
+  
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    right: 20px;
+    height: 120px;
+    background: 
+      repeating-linear-gradient(
+        45deg,
+        transparent 0px,
+        transparent 12px,
+        rgba(139, 69, 19, 0.4) 12px,
+        rgba(139, 69, 19, 0.4) 18px
+      );
+    border-radius: 40px;
+  }
 }
 
-@include respond-to(10px,767px){
-    main{
-        width: 90%;
-        .mobile-line{
-            display: block;
+body::after {
+  content: '';
+  position: fixed;
+  top: 80px;
+  left: 8%;
+  width: 100px;
+  height: 150px;
+  background: 
+    radial-gradient(ellipse at center top, $Lamp-Brass 0%, $Lamp-Gold 30%, $Lamp-Brass 60%, $Lamp-Gold 100%);
+  border-radius: 50px 50px 20px 20px;
+  opacity: 0.25;
+  z-index: 0;
+  transform-origin: top center;
+  animation: lampSwing2 8s ease-in-out infinite;
+  box-shadow: 
+    inset 0 0 25px rgba(255, 215, 0, 0.3),
+    0 0 40px rgba(255, 215, 0, 0.1);
+}
+
+main::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  right: calc(10% + 60px);
+  width: 3px;
+  height: 50px;
+  background: linear-gradient(to bottom, $Lamp-Chain, $Lamp-Brass);
+  opacity: 0.4;
+  z-index: 0;
+  animation: lampSwing1 6s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+main::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: calc(8% + 50px);
+  width: 3px;
+  height: 80px;
+  background: linear-gradient(to bottom, $Lamp-Chain, $Lamp-Brass);
+  opacity: 0.3;
+  z-index: 0;
+  animation: lampSwing2 8s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+    main {
+        width: 40%;
+        padding: 2rem;
+        background-color: $Dark-Grayish-Blue;
+        @include border(0px, 10px);
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        gap: 1rem;
+        
+        h1,p {
+            color: $Neon-Green;
+            letter-spacing: 0.5rem;
         }
-        .desktop-line{
+        
+        .advice {
+            overflow: hidden;
+            white-space: normal;
+            text-align: center;
+        }
+        
+        .advice-id {
+            letter-spacing: 0.1rem;
+            font-size: 2rem;
+        }
+        
+        q {
+            color: $Light-Cyan;
+            font-size: 1.7rem;
+        }
+        
+        .mobile-line {
             display: none;
         }
     }
-}
+
+    div {
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        margin-top: -25px;
+        
+        button {
+            padding: 0.5rem;
+            background-color: $Neon-Green;
+            border: none !important; 
+            border-radius: 50% !important; 
+            cursor: pointer;
+            transition: box-shadow 0.5s ease;
+            z-index: 1;
+            width: 50px; 
+            height: 50px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            &:hover {
+                box-shadow: 0 0 40px $Neon-Green;
+            }
+        }
+    }
+
+    @include respond-to(10px, 767px) {
+        main {
+            width: 90%;
+            
+            .mobile-line {
+                display: block;
+            }
+            
+            .desktop-line {
+                display: none;
+            }
+        }
+        
+        div {
+            width: 90%;
+        }
+    }

@@ -104,25 +104,13 @@ main .advice {
   }
 }
 @keyframes buttonAnimation {
-  0% {
+  from {
     transform: rotate(0deg);
     box-shadow: none;
   }
-  25% {
-    transform: rotate(-20deg);
+  to {
+    transform: rotate(90deg);
     box-shadow: 0 0 20px 5px hsl(150, 100%, 66%);
-  }
-  50% {
-    transform: rotate(0deg);
-    box-shadow: none;
-  }
-  75% {
-    transform: rotate(20deg);
-    box-shadow: 0 0 20px 5px hsl(150, 100%, 66%);
-  }
-  100% {
-    transform: rotate(0deg);
-    box-shadow: none;
   }
 }
 .button-animate {
@@ -131,22 +119,6 @@ main .advice {
   animation-direction: reverse;
 }
 
-@keyframes lampSwing1 {
-  0%, 100% {
-    transform: rotate(-6deg);
-  }
-  50% {
-    transform: rotate(6deg);
-  }
-}
-@keyframes lampSwing2 {
-  0%, 100% {
-    transform: rotate(4deg);
-  }
-  50% {
-    transform: rotate(-4deg);
-  }
-}
 body {
   min-height: 100vh !important;
   width: 100vw;
@@ -161,76 +133,6 @@ body {
   padding: 0;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  top: 50px;
-  right: 10%;
-  width: 120px;
-  height: 180px;
-  background: radial-gradient(ellipse at center top, hsl(45, 60%, 70%) 0%, hsl(45, 76%, 50%) 30%, hsl(45, 60%, 70%) 60%, hsl(45, 76%, 50%) 100%);
-  border-radius: 60px 60px 25px 25px;
-  opacity: 0.35;
-  z-index: 0;
-  transform-origin: top center;
-  animation: lampSwing1 6s ease-in-out infinite;
-  box-shadow: inset 0 0 30px rgba(255, 215, 0, 0.3), 0 0 50px rgba(255, 215, 0, 0.1);
-}
-body::before::after {
-  content: "";
-  position: absolute;
-  top: 30px;
-  left: 20px;
-  right: 20px;
-  height: 120px;
-  background: repeating-linear-gradient(45deg, transparent 0px, transparent 12px, rgba(139, 69, 19, 0.4) 12px, rgba(139, 69, 19, 0.4) 18px);
-  border-radius: 40px;
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  top: 80px;
-  left: 8%;
-  width: 100px;
-  height: 150px;
-  background: radial-gradient(ellipse at center top, hsl(45, 60%, 70%) 0%, hsl(45, 76%, 50%) 30%, hsl(45, 60%, 70%) 60%, hsl(45, 76%, 50%) 100%);
-  border-radius: 50px 50px 20px 20px;
-  opacity: 0.25;
-  z-index: 0;
-  transform-origin: top center;
-  animation: lampSwing2 8s ease-in-out infinite;
-  box-shadow: inset 0 0 25px rgba(255, 215, 0, 0.3), 0 0 40px rgba(255, 215, 0, 0.1);
-}
-
-main::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  right: calc(10% + 60px);
-  width: 3px;
-  height: 50px;
-  background: linear-gradient(to bottom, hsl(45, 40%, 60%), hsl(45, 60%, 70%));
-  opacity: 0.4;
-  z-index: 0;
-  animation: lampSwing1 6s ease-in-out infinite;
-  transform-origin: top center;
-}
-
-main::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: calc(8% + 50px);
-  width: 3px;
-  height: 80px;
-  background: linear-gradient(to bottom, hsl(45, 40%, 60%), hsl(45, 60%, 70%));
-  opacity: 0.3;
-  z-index: 0;
-  animation: lampSwing2 8s ease-in-out infinite;
-  transform-origin: top center;
-}
-
 main {
   width: 40%;
   padding: 2rem;
@@ -243,7 +145,7 @@ main {
   align-items: center;
   gap: 1rem;
 }
-main h1, main p {
+main p {
   color: hsl(150, 100%, 66%);
   letter-spacing: 0.5rem;
 }
@@ -254,11 +156,10 @@ main .advice {
 }
 main .advice-id {
   letter-spacing: 0.1rem;
-  font-size: 2rem;
 }
 main q {
   color: hsl(193, 38%, 86%);
-  font-size: 1.7rem;
+  font-size: 1.2rem;
 }
 main .mobile-line {
   display: none;
@@ -272,7 +173,7 @@ div {
 }
 div button {
   padding: 0.5rem;
-  background-color: hsl(150, 100%, 66%);
+  background-color: hsl(150, 100%, 66%) !important;
   border: none !important;
   border-radius: 50% !important;
   cursor: pointer;
@@ -283,6 +184,11 @@ div button {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+div button img {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);
 }
 div button:hover {
   box-shadow: 0 0 40px hsl(150, 100%, 66%);
